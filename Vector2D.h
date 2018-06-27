@@ -47,10 +47,10 @@ public:
 	static double CrossProduct(const Vector2d&, const Vector2d&);
 
 	//Returns the length of the vector from the origin.
-	static double Magnitude(const Vector2d&);
+	double Magnitude();
 
 	//Return the unit vector of the input
-	static Vector2d Normal(const Vector2d&);
+	static Vector2d Normal(Vector2d);
 
 	//Return a vector perpendicular to the left.
 	static Vector2d Perpendicular(const Vector2d&);

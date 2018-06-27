@@ -195,6 +195,29 @@ void ListCell2D::calcul_vol_cells()
 	}
 }
 
+void face::calcul_area_face()
+{
+    Vector2d faceVec;
+    double x = this->p1.get_x()-this->p2.get_x();
+    double y = this->p1.get_y()-this->p2.get_y();
+    faceVec = Vector2d(x, y);
+    double normVec = faceVec.Magnitude();
+    this->area = normVec;
+}
+
+void ListCell2D::calcul_area_cent_faces()
+{
+    for (unsigned i = 0; i < msh_reader.nbelm; i++)
+    {
+        Cell2D *aCell = &this->cells[i];
+        for (unsigned j = 0; j < 4; j++)
+        {
+            aCell->faces[j].calcul_area_face();
+        }
+
+    }
+}
+
 void ListCell2D::detect_nearest_neighbor()
 {
 	for (unsigned i = 0; i < msh_reader.nbelm; i++)

@@ -9,6 +9,7 @@
 #include <iostream>
 #include "MyPoint.h"
 #include "GmshReader.h"
+#include "Vector2D.h"
 
 class face {
 public:
@@ -17,10 +18,11 @@ public:
 	unsigned idface;
 	double area = 0.0;
 	MyPoint centroid;
+	void calcul_area_face();
 };
 
 class Cell2D : public MyPoint {
-public: 
+public:
 	unsigned ident = 0;
 	MyPoint vertex[4];
 	face faces[4];
@@ -43,6 +45,7 @@ public:
 	void detect_nearest_neighbor();
 	void calcul_vol_cells();
 	void write_vtk();
+	void calcul_area_cent_faces();
 };
 
 

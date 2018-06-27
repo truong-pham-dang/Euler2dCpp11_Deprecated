@@ -83,14 +83,14 @@ double Vector2d::CrossProduct(const Vector2d &a, const Vector2d &b)
 	return ((a.x * b.y) - (a.y * b.x));
 }
 
-double Vector2d::Magnitude(const Vector2d &v)
+double Vector2d::Magnitude()
 {
-	return sqrt((v.x * v.x) + (v.y * v.y));
+	return sqrt((this->x * this->x) + (this->y * this->y));
 }
 
-Vector2d Vector2d::Normal(const Vector2d &v)
+Vector2d Vector2d::Normal(Vector2d v)
 {
-	double magnitude = Magnitude(v);
+	double magnitude = v.Magnitude();
 	return Vector2d(v.x / magnitude, v.y / magnitude);
 }
 
