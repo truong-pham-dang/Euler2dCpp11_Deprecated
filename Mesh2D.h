@@ -22,7 +22,7 @@ public:
 	void calcul_mid_point();
 };
 
-class Cell2D : public MyPoint {
+class Cell2D {
 public:
 	unsigned ident = 0;
 	MyPoint vertex[4];
@@ -35,7 +35,7 @@ public:
 	void calcul_vol();
 };
 
-class ListCell2D : public Cell2D {
+class ListCell2D {
 public:
 	unsigned nbfaces;
 	GmshReader msh_reader;
