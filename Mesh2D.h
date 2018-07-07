@@ -40,6 +40,9 @@ public:
 	unsigned nbfaces;
 	GmshReader msh_reader;
 	vector<Cell2D> cells;
+	void preProcessing();
+
+private:
 	void assign_vextex();
 	void assign_faces();
 	void assign_boundary_condition();

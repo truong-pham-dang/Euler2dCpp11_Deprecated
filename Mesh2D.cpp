@@ -1,6 +1,20 @@
 #include "Mesh2D.h"
 
 
+void ListCell2D::preProcessing()
+{
+    assign_vextex();
+	assign_faces();
+	assign_boundary_condition();
+	detect_nearest_neighbor();
+	write_vtk();
+
+	// Calculate some geometry information
+	calcul_vol_cells();
+	calcul_area_cent_faces();
+    assign_id_faces();
+}
+
 void Cell2D::calcul_vol()
 {
 	double x1 = this->vertex[0].get_x();

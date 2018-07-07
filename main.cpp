@@ -15,16 +15,9 @@ int main()
 
 	list_cell.msh_reader.GmshLoadMesh();
 
-	list_cell.assign_vextex();
-	list_cell.assign_faces();
-	list_cell.assign_boundary_condition();
-	list_cell.detect_nearest_neighbor();
-	list_cell.write_vtk();
+	// Preprocessing:
 
-	// Calculate some geometry information
-	list_cell.calcul_vol_cells();
-	list_cell.calcul_area_cent_faces();
-	list_cell.assign_id_faces();
+	list_cell.preProcessing();
 
 	high_resolution_clock::time_point t2 = high_resolution_clock::now();
 	auto duration = duration_cast<seconds>(t2 - t1).count();
