@@ -23,6 +23,8 @@ int main()
 
 	// Calculate some geometry information
 	list_cell.calcul_vol_cells();
+	list_cell.calcul_area_cent_faces();
+	list_cell.assign_id_faces();
 
 	high_resolution_clock::time_point t2 = high_resolution_clock::now();
 	auto duration = duration_cast<seconds>(t2 - t1).count();

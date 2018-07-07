@@ -432,3 +432,117 @@ void ListCell2D::write_vtk()
 	outfile.close();
 }
 
+void ListCell2D::assign_id_faces()
+{
+    nbfaces = 0;
+
+    for (auto itCell : cells)
+    {
+        Cell2D currentCell = itCell;
+        for (auto itFace : currentCell.faces)
+        {
+            face currentFace = itFace;
+            if (currentFace.idface == -1)
+            {
+                MyPoint centroidCurrentFace = currentFace.centroid;
+                Cell2D *neighborCell = currentCell.neighbor1;
+                if (neighborCell != nullptr)
+                {
+                    for (auto itFace2 : neighborCell->faces)
+                    {
+                        face neighborFace = itFace2;
+                        MyPoint centroidNeighborFace = neighborFace.centroid;
+                        if (centroidCurrentFace == centroidNeighborFace)
+                        {
+                            currentFace.idface  = nbfaces;
+                            neighborFace.idface = nbfaces;
+                            nbfaces             = nbfaces + 1;
+                        }
+                    }
+                }
+                else if (neighborCell == nullptr)
+                {
+                    if (currentFace.bc_typ == 0)
+                    {
+                        currentFace.idface  = nbfaces;
+                        nbfaces             = nbfaces + 1;
+                    }
+                }
+
+                neighborCell = currentCell.neighbor2;
+                if (neighborCell != nullptr)
+                {
+                    for (auto itFace2 : neighborCell->faces)
+                    {
+                        face neighborFace = itFace2;
+                        MyPoint centroidNeighborFace = neighborFace.centroid;
+                        if (centroidCurrentFace == centroidNeighborFace)
+                        {
+                            currentFace.idface  = nbfaces;
+                            neighborFace.idface = nbfaces;
+                            nbfaces             = nbfaces + 1;
+                        }
+                    }
+                }
+                else if (neighborCell == nullptr)
+                {
+                    if (currentFace.bc_typ == 0)
+                    {
+                        currentFace.idface  = nbfaces;
+                        nbfaces             = nbfaces + 1;
+                    }
+                }
+
+                neighborCell = currentCell.neighbor3;
+                if (neighborCell != nullptr)
+                {
+                    for (auto itFace2 : neighborCell->faces)
+                    {
+                        face neighborFace = itFace2;
+                        MyPoint centroidNeighborFace = neighborFace.centroid;
+                        if (centroidCurrentFace == centroidNeighborFace)
+                        {
+                            currentFace.idface  = nbfaces;
+                            neighborFace.idface = nbfaces;
+                            nbfaces             = nbfaces + 1;
+                        }
+                    }
+                }
+                else if (neighborCell == nullptr)
+                {
+                    if (currentFace.bc_typ == 0)
+                    {
+                        currentFace.idface  = nbfaces;
+                        nbfaces             = nbfaces + 1;
+                    }
+                }
+
+
+                neighborCell = currentCell.neighbor4;
+                if (neighborCell != nullptr)
+                {
+                    for (auto itFace2 : neighborCell->faces)
+                    {
+                        face neighborFace = itFace2;
+                        MyPoint centroidNeighborFace = neighborFace.centroid;
+                        if (centroidCurrentFace == centroidNeighborFace)
+                        {
+                            currentFace.idface  = nbfaces;
+                            neighborFace.idface = nbfaces;
+                            nbfaces             = nbfaces + 1;
+                        }
+                    }
+                }
+                else if (neighborCell == nullptr)
+                {
+                    if (currentFace.bc_typ == 0)
+                    {
+                        currentFace.idface  = nbfaces;
+                        nbfaces             = nbfaces + 1;
+                    }
+                }
+
+            }
+        }
+    }
+}

@@ -14,8 +14,8 @@
 class face {
 public:
 	MyPoint p1, p2;
-	int bc_typ;
-	unsigned idface;
+	int bc_typ = 0;
+	unsigned idface = -1;
 	double area = 0.0;
 	MyPoint centroid;
 	void calcul_area_face();
@@ -43,6 +43,7 @@ public:
 	void assign_vextex();
 	void assign_faces();
 	void assign_boundary_condition();
+	void assign_id_faces();
 	void detect_nearest_neighbor();
 	void calcul_vol_cells();
 	void write_vtk();
